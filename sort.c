@@ -30,7 +30,8 @@ void bubblesortchar(char array[FILE_SIZE][COL], int size) {
 	}
 }
 int main() {
- 
+	clock_t start2, end2;
+ 	double totaltime;
 	char storeArray[FILE_SIZE][COL] ;
 	
 	FILE *filePtr_10K;
@@ -54,8 +55,14 @@ int main() {
 	fclose(filePtr_10K);
 	
 	}
-
+	
+	start2=clock(); 
 	bubblesortchar(storeArray, FILE_SIZE);
+	end2=clock();
+	
+	totaltime = (double)(end2 - start2) / CLOCKS_PER_SEC;
+	printf("Time for sorting with bubble sort is: %f\n", totaltime);
+	
 	printf("--First 100 elements in ascending order--\n");
 	for(j=0; j<100; j++){
 		printf("%s -  ", storeArray[j]);
